@@ -10,7 +10,7 @@ namespace AnswersAPI_Mauricio.Models
             Users = new HashSet<User>();
         }
 
-        public int UserStatuId { get; set; }
+        public int UserStatusId { get; set; }
         public string Status { get; set; }
 
         public virtual ICollection<User> Users { get; set; }

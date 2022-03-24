@@ -274,7 +274,7 @@ namespace AnswersAPI_Mauricio.Models
 
                 entity.Property(e => e.UserRoleId).HasColumnName("UserRoleID");
 
-                entity.Property(e => e.UserStatuId).HasColumnName("UserStatuID");
+                entity.Property(e => e.UserStatusId).HasColumnName("UserStatusID");
 
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.Users)
@@ -288,9 +288,9 @@ namespace AnswersAPI_Mauricio.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FKUser854768");
 
-                entity.HasOne(d => d.UserStatu)
+                entity.HasOne(d => d.UserStatus)
                     .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.UserStatuId)
+                    .HasForeignKey(d => d.UserStatusId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FKUser472287");
             });
@@ -310,12 +310,9 @@ namespace AnswersAPI_Mauricio.Models
 
             modelBuilder.Entity<UserStatus>(entity =>
             {
-                entity.HasKey(e => e.UserStatuId)
-                    .HasName("PK__UserStat__DE1EE8FB1438DFCA");
-
                 entity.ToTable("UserStatus");
 
-                entity.Property(e => e.UserStatuId).HasColumnName("UserStatuID");
+                entity.Property(e => e.UserStatusId).HasColumnName("UserStatusID");
 
                 entity.Property(e => e.Status)
                     .IsRequired()

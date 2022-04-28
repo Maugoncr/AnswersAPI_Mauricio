@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AnswersAPI_Mauricio.Models;
+using AnswersAPI_Mauricio.Attributes;
 
 namespace AnswersAPI_Mauricio.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
+
     public class AsksController : ControllerBase
     {
         private readonly AnswersDBContext _context;
@@ -18,6 +21,27 @@ namespace AnswersAPI_Mauricio.Controllers
         public AsksController(AnswersDBContext context)
         {
             _context = context;
+        }
+
+        // Holaaaaaaaaaaaaaa
+        // GET: api/Asks
+        [HttpGet("GetQuestionsListByUserID")]
+        public async Task<ActionResult<IEnumerable<Ask>>> GetQuestionsListByUserID(int pUserID)
+        {
+            // esto es el equivalente a un select con where
+             var QList = await _context.Asks.Where(u => u.UserId == pUserID).ToListAsync();
+
+           // var QList = (from i in _context.Asks
+          //               where i.UserId.Equals(pUserID)
+           //              select i);
+
+            if (QList == null)
+            {
+                return NotFound();
+            }
+
+
+            return QList;
         }
 
         // GET: api/Asks

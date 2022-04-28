@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AnswersAPI_Mauricio.Models;
+using AnswersAPI_Mauricio.Attributes;
 
 namespace AnswersAPI_Mauricio.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
     public class UserRolesController : ControllerBase
     {
         private readonly AnswersDBContext _context;
@@ -19,6 +21,26 @@ namespace AnswersAPI_Mauricio.Controllers
         {
             _context = context;
         }
+
+
+
+        // Cargar solo los pickers que son IsSelectable == true
+        // GET: api/UserRoles
+        [HttpGet("GetUserRolesList")]
+        public async Task<ActionResult<IEnumerable<UserRole>>> GetUserRolesList()
+        {
+
+            List<UserRole> list = await _context.UserRoles.Where(u => u.IsUserSelectable == true).ToListAsync();
+
+            if (list == null)
+            {
+                return NotFound();
+            }
+
+            return list;
+
+        }
+
 
         // GET: api/UserRoles
         [HttpGet]

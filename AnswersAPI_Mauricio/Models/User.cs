@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-
 
 namespace AnswersAPI_Mauricio.Models
 {
@@ -16,7 +14,6 @@ namespace AnswersAPI_Mauricio.Models
             Likes = new HashSet<Like>();
         }
 
-       
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
@@ -38,12 +35,5 @@ namespace AnswersAPI_Mauricio.Models
         public virtual ICollection<Chat> ChatReceivers { get; set; }
         public virtual ICollection<Chat> ChatSenders { get; set; }
         public virtual ICollection<Like> Likes { get; set; }
-
-
-
-
-
-
-
     }
 }

@@ -14,7 +14,7 @@ namespace AnswersAPI_Mauricio.Tools
         string LlavePersonalizadaApp = "Reciclaje/kajhsdkjh672716762TEMP";
         string LlavePersonalizadaAPI = "APiklsjdnfjkfdf90rer83722";
 
-        public string DesEncriptarPassword(string Pass, bool UsarLlaveApp = true)
+        public string DesEncriptarPassword(string Pass, bool UsarLlaveApp = false)
         {
             string R = string.Empty;
 
@@ -47,7 +47,7 @@ namespace AnswersAPI_Mauricio.Tools
 
         }
 
-        public string EncriptarPassword(string Pass, bool UsarLlaveApp = true)
+        public string EncriptarPassword(string Pass, bool UsarLlaveApp = false)
         {
             string R = string.Empty;
 
